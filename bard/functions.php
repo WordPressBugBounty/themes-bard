@@ -92,15 +92,18 @@ function bard_activation_notice() {
 	$theme_data	 = wp_get_theme();
 	$theme_vers	 = str_replace( '.', '_', $theme_data->get( 'Version' ) );
 
+	// Add the nonce to the dismiss button URL
     $nonce = wp_create_nonce( esc_html( $theme_data->get( 'TextDomain' ) ) . $theme_vers . '_notice_ignore_nonce' );
 	
-	// Add the nonce to the dismiss button URL
-    $dismiss_url = add_query_arg(
-        array(
-            esc_html( $theme_data->get( 'TextDomain' ) ) . $theme_vers . '_notice_ignore' => '0',
-            '_wpnonce' => $nonce
-        )
-    );
+	// Sanitize the key by using sanitize_key() and sanitize other parameters as needed
+	$key = sanitize_key( $theme_data->get( 'TextDomain' ) . $theme_vers . '_notice_ignore' );
+	$dismiss_url = esc_url( add_query_arg(
+		[
+			$key      => '0',
+			'_wpnonce' => esc_html( $nonce ) // Ensure $nonce is escaped
+		],
+		admin_url() // Or another base URL if needed
+	) );
 
 	if ( ! get_user_meta( $user_id, esc_html( $theme_data->get( 'TextDomain' ) ) . $theme_vers .'_notice_ignore' ) ) {
 
@@ -243,7 +246,7 @@ add_action( 'wp_enqueue_scripts', 'bard_scripts' );
 function bard_arizonia_font_url() {
     $font_url = '';
     if ( 'off' !== _x( 'on', 'Google font: on or off', 'bard' ) ) {
-        $font_url = add_query_arg( 'family', urlencode( 'Arizonia:300,300i,400,400i,500,500i,600,600i,700,700i' ), "//fonts.googleapis.com/css" );
+        $font_url = esc_url( add_query_arg( 'family', urlencode( 'Arizonia:300,300i,400,400i,500,500i,600,600i,700,700i' ), "//fonts.googleapis.com/css" ) );
     }
     return $font_url;
 }
@@ -251,7 +254,7 @@ function bard_arizonia_font_url() {
 function bard_montserrat_font_url() {
     $font_url = '';
     if ( 'off' !== _x( 'on', 'Google font: on or off', 'bard' ) ) {
-        $font_url = add_query_arg( 'family', urlencode( 'Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i' ), "//fonts.googleapis.com/css" );
+        $font_url = esc_url( add_query_arg( 'family', urlencode( 'Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i' ), "//fonts.googleapis.com/css" ) );
     }
     return $font_url;
 }
@@ -259,7 +262,7 @@ function bard_montserrat_font_url() {
 function bard_opensans_font_url() {
     $font_url = '';
     if ( 'off' !== _x( 'on', 'Google font: on or off', 'bard' ) ) {
-        $font_url = add_query_arg( 'family', urlencode( 'Open Sans:400,400i,600,600i,700,700i' ), "//fonts.googleapis.com/css" );
+        $font_url = esc_url( add_query_arg( 'family', urlencode( 'Open Sans:400,400i,600,600i,700,700i' ), "//fonts.googleapis.com/css" ) );
     }
     return $font_url;
 }
@@ -267,7 +270,7 @@ function bard_opensans_font_url() {
 function bard_kalam_font_url() {
     $font_url = '';
     if ( 'off' !== _x( 'on', 'Google font: on or off', 'bard' ) ) {
-        $font_url = add_query_arg( 'family', urlencode( 'Kalam' ), "//fonts.googleapis.com/css" );
+        $font_url = esc_url( add_query_arg( 'family', urlencode( 'Kalam' ), "//fonts.googleapis.com/css" ) );
     }
     return $font_url;
 }
@@ -275,7 +278,7 @@ function bard_kalam_font_url() {
 function bard_rokkitt_font_url() {
     $font_url = '';
     if ( 'off' !== _x( 'on', 'Google font: on or off', 'bard' ) ) {
-        $font_url = add_query_arg( 'family', urlencode( 'Rokkitt' ), "//fonts.googleapis.com/css" );
+        $font_url = esc_url( add_query_arg( 'family', urlencode( 'Rokkitt:400,400i,700,700i' ), "//fonts.googleapis.com/css" ) );
     }
     return $font_url;
 }
@@ -365,7 +368,7 @@ add_action( 'widgets_init', 'bard_widgets_init' );
 ** Custom Image Sizes
 */
 add_image_size( 'bard-slider-full-thumbnail', 1080, 540, true );
-add_image_size( 'bard-full-thumbnail', 1140, 0, true );
+add_image_size( 'bard-full-thumbnail', 1140, 9999, true );
 add_image_size( 'bard-grid-thumbnail', 500, 380, true );
 add_image_size( 'bard-list-thumbnail', 300, 300, true );
 add_image_size( 'bard-single-navigation', 75, 75, true );
