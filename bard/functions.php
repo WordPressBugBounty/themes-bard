@@ -368,7 +368,7 @@ add_action( 'widgets_init', 'bard_widgets_init' );
 ** Custom Image Sizes
 */
 add_image_size( 'bard-slider-full-thumbnail', 1080, 540, true );
-add_image_size( 'bard-full-thumbnail', 1140, 9999, true );
+add_image_size( 'bard-full-thumbnail', 1140, 0, true );
 add_image_size( 'bard-grid-thumbnail', 500, 380, true );
 add_image_size( 'bard-list-thumbnail', 300, 300, true );
 add_image_size( 'bard-single-navigation', 75, 75, true );
