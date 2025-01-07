@@ -2,8 +2,8 @@
 
 Author: Royal-Flush wp-royal-themes.com
 Requires at least: WordPress 4.7+
-Tested up to: WordPress 6.7
-Version: 2.219
+Tested up to: WordPress 6.7.1
+Version: 2.220
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Tags: blog, e-commerce, food-and-drink, one-column, two-columns, three-columns, grid-layout, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, flexible-header, full-width-template, custom-menu, custom-logo, featured-images, footer-widgets, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -23,7 +23,7 @@ https://wp-royal-themes.com/themes/bard/docs/?ref=readme
 
 == Copyright ==
 
-Bard, Copyright 2024 wp-royal-themes.com
+Bard, Copyright 2025 wp-royal-themes.com
 It is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
