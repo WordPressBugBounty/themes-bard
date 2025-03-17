@@ -155,6 +155,30 @@ function bard_about_page_output() {
 
 			</div>
 
+			<!-- TODO: News Magazine X Theme Installation (remove later) -->
+			<div class="newsx-theme-banner">
+				<div class="image-wrap">
+					<img src="<?php echo esc_url(get_template_directory_uri()) . '/assets/images/newsx-banner.jpg'; ?>" alt="">
+					<a href="<?php echo esc_url('https://news-magazine-x-free.wp-royal-themes.com/demo/?ref=bard-free-dash-predefined-styles'); ?>" target="_blank">
+						<span class="dashicons dashicons-external"></span>
+					</a>
+				</div>
+
+				<div class="newsx-theme-info">
+					<h2>Free News / Blog / Magazine Theme</h2>
+					<p>Due to the high demand of our trusted users we designed a <strong>FREE</strong>, <strong>Lightning-fast</strong> and <strong>Easy to use</strong> WordPress theme with built-in Header/Footer Builder.</p>
+					<p>You can try it out for free right now, just click the button below to get started.</p>
+
+					<div class="newsx-theme-buttons">
+						<a class="button button-primary newsx-theme-install">Install News Magazine X Theme</a>
+						<a class="button button-primary" target="_blank" href="https://news-magazine-x-free.wp-royal-themes.com/demo/?ref=bard-free-dash-predefined-styles">
+							<span>Theme Demo Preview</span>
+							<span class="dashicons dashicons-external"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+
 			<!-- Predefined Styles -->
 			<div class="four-columns-wrap predefined-styles">
 						
@@ -612,6 +636,26 @@ function bard_plugin_auto_activation() {
 }
 add_action( 'wp_ajax_bard_plugin_auto_activation', 'bard_plugin_auto_activation' );
 
+
+
+// TODO: News Magazine X Theme Installation (remove later)
+function bard_install_news_magazine_x_theme() {
+    $nonce = $_POST['nonce'];
+
+    if ( !wp_verify_nonce( $nonce, 'bard_about_nonce')  || !current_user_can( 'manage_options' ) ) {
+      exit; // Get out of here, the nonce is rotten!
+    }
+    
+    if (!current_user_can('switch_themes')) {
+        wp_send_json_error('Permission denied');
+    }
+
+    $theme = sanitize_text_field($_POST['theme']);
+    switch_theme($theme);
+    wp_send_json_success();
+}
+add_action( 'wp_ajax_bard_install_news_magazine_x_theme', 'bard_install_news_magazine_x_theme' );
+
 // enqueue ui CSS/JS
 function bard_enqueue_about_page_scripts($hook) {
 
@@ -619,13 +663,21 @@ function bard_enqueue_about_page_scripts($hook) {
 		return;
 	}
 
+	// Get the current version of the theme
+	$theme_data = wp_get_theme();
+	$theme_version = $theme_data->get('Version');
+
 	// enqueue CSS
-	wp_enqueue_style( 'bard-about-css', get_theme_file_uri( '/inc/about/css/about-page.css' ), array(), '1.8.9.9' );
+	wp_enqueue_style( 'bard-about-css', get_theme_file_uri( '/inc/about/css/about-page.css' ), array(), $theme_version );
 
 	// Demo Import
 	wp_enqueue_script( 'plugin-install' );
 	wp_enqueue_script( 'updates' );
-	wp_enqueue_script( 'bard-about-js', get_theme_file_uri( '/inc/about/js/about-bard-page.js' ), array(), '1.4' );
+
+	wp_enqueue_script( 'bard-about-js', get_theme_file_uri( '/inc/about/js/about-bard-page.js' ), array(), $theme_version );
+	wp_localize_script('bard-about-js', 'bard_about', array(
+        'nonce' => wp_create_nonce('bard_about_nonce')
+    ));
 
 }
 add_action( 'admin_enqueue_scripts', 'bard_enqueue_about_page_scripts' );
