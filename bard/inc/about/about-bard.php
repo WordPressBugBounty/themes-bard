@@ -159,7 +159,7 @@ function bard_about_page_output() {
 			<div class="newsx-theme-banner">
 				<div class="image-wrap">
 					<img src="<?php echo esc_url(get_template_directory_uri()) . '/assets/images/newsx-banner.jpg'; ?>" alt="">
-					<a href="<?php echo esc_url('https://news-magazine-x-free.wp-royal-themes.com/demo/?ref=bard-free-dash-predefined-styles'); ?>" target="_blank">
+					<a href="<?php echo esc_url('https://wp-royal-themes.com/themes/item-news-magazine-x-free/?ref=bard-free-dash-predefined-styles#!/demo-preview'); ?>" target="_blank">
 						<span class="dashicons dashicons-external"></span>
 					</a>
 				</div>
@@ -171,7 +171,7 @@ function bard_about_page_output() {
 
 					<div class="newsx-theme-buttons">
 						<a class="button button-primary newsx-theme-install">Install News Magazine X Theme</a>
-						<a class="button button-primary" target="_blank" href="https://news-magazine-x-free.wp-royal-themes.com/demo/?ref=bard-free-dash-predefined-styles">
+						<a class="button button-primary" target="_blank" href="https://wp-royal-themes.com/themes/item-news-magazine-x-free/?ref=bard-free-dash-predefined-styles#!/demo-preview">
 							<span>Theme Demo Preview</span>
 							<span class="dashicons dashicons-external"></span>
 						</a>
