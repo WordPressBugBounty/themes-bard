@@ -3,7 +3,7 @@
 Author: Royal-Flush wp-royal-themes.com
 Requires at least: WordPress 4.7+
 Tested up to: WordPress 6.8.2
-Version: 2.225
+Version: 2.226
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Tags: blog, e-commerce, food-and-drink, one-column, two-columns, three-columns, grid-layout, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, flexible-header, full-width-template, custom-menu, custom-logo, featured-images, footer-widgets, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -18,7 +18,7 @@ Personal and Multi-Author Free WordPress Blog Theme. Perfect for personal, lifes
 == Theme Documentation ==
 
 Please read the Theme Documentation to undertand the basics: Installation, Setup, etc...
-https://wp-royal-themes.com/themes/bard/docs/?ref=readme
+https://wp-royal-themes.com/themes/bard/docs/?ref=readmefromorg
 
 
 == Copyright ==
