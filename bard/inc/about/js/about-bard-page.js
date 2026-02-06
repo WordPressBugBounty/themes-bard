@@ -17,10 +17,25 @@ jQuery( document ).ready( function ($) {
             wp.updates.installPlugin({
                 slug: 'bard-extra',
                 success: function(){
-                    $.post(ajaxurl, data, function(response) {
-                        $('#bard-demo-content-inst').html( 'Redirecting...' );
-                        window.location.replace( baseURL + '/admin.php?page=bard-extra' );
-                    })
+                    // Install royal-backup-reset plugin after bard-extra
+                    $('#bard-demo-content-inst').html( 'Installing Backup Plugin...' );
+                    wp.updates.installPlugin({
+                        slug: 'royal-backup-reset',
+                        success: function(){
+                            // Both plugins installed, now activate
+                            $.post(ajaxurl, data, function(response) {
+                                $('#bard-demo-content-inst').html( 'Redirecting...' );
+                                window.location.replace( baseURL + '/admin.php?page=bard-extra' );
+                            });
+                        },
+                        error: function(xhr){
+                            // royal-backup-reset may already be installed, proceed anyway
+                            $.post(ajaxurl, data, function(response) {
+                                $('#bard-demo-content-inst').html( 'Redirecting...' );
+                                window.location.replace( baseURL + '/admin.php?page=bard-extra' );
+                            });
+                        }
+                    });
                 }
             });
 
@@ -30,16 +45,30 @@ jQuery( document ).ready( function ($) {
     // Activate
     $( '#bard-demo-content-act' ).on( 'click', function() {
 
-            $('#bard-demo-content-act').html( 'Installing Import Plugin...' );
+            $('#bard-demo-content-act').html( 'Installing Backup Plugin...' );
 
             var data = {
                 action: 'bard_plugin_auto_activation'
             };
 
-            $.post(ajaxurl, data, function(response) {
-                $('#bard-demo-content-act').html( 'Redirecting...' );
-                window.location.replace( baseURL + '/admin.php?page=bard-extra' );
-            })
+            // Install royal-backup-reset plugin before activating
+            wp.updates.installPlugin({
+                slug: 'royal-backup-reset',
+                success: function(){
+                    // Plugin installed, now activate both
+                    $.post(ajaxurl, data, function(response) {
+                        $('#bard-demo-content-act').html( 'Redirecting...' );
+                        window.location.replace( baseURL + '/admin.php?page=bard-extra' );
+                    });
+                },
+                error: function(xhr){
+                    // royal-backup-reset may already be installed, proceed anyway
+                    $.post(ajaxurl, data, function(response) {
+                        $('#bard-demo-content-act').html( 'Redirecting...' );
+                        window.location.replace( baseURL + '/admin.php?page=bard-extra' );
+                    });
+                }
+            });
 
         }
     );

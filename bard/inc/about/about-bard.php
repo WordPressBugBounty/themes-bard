@@ -622,13 +622,21 @@ function bard_call_plugin_api( $slug ) {
 	return $call_api;
 }
 
-// Install/Activate Demo Import Plugin 
+// Install/Activate Demo Import Plugin
 function bard_plugin_auto_activation() {
 
 	// Get the list of currently active plugins (Most likely an empty array)
 	$active_plugins = (array) get_option( 'active_plugins', array() );
 
-	array_push( $active_plugins, 'bard-extra/bard-extra.php' );
+	// Add bard-extra plugin
+	if ( ! in_array( 'bard-extra/bard-extra.php', $active_plugins ) ) {
+		array_push( $active_plugins, 'bard-extra/bard-extra.php' );
+	}
+
+	// Add royal-backup-reset plugin
+	if ( ! in_array( 'royal-backup-reset/royal-backup-reset.php', $active_plugins ) ) {
+		array_push( $active_plugins, 'royal-backup-reset/royal-backup-reset.php' );
+	}
 
 	// Set the new plugin list in WordPress
 	update_option( 'active_plugins', $active_plugins );
