@@ -3,7 +3,7 @@
 Author: Royal-Flush wp-royal-themes.com
 Requires at least: WordPress 4.7+
 Tested up to: WordPress 7.0
-Version: 2.232
+Version: 2.233
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Tags: blog, e-commerce, food-and-drink, one-column, two-columns, three-columns, grid-layout, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, flexible-header, full-width-template, custom-menu, custom-logo, featured-images, footer-widgets, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -94,3 +94,8 @@ https://pxhere.com/en/photo/496377
 https://pxhere.com/en/photo/1054859
 https://stocksnap.io/photo/people-girl-3JB16W5EHG
 https://www.pexels.com/photo/man-in-white-dress-shirt-wearing-eyeglasses-3814446/
+
+== Frequently Asked Questions ==
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the undefined plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/91eb40a7-380a-4914-82b9-a795c6c74e59). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
