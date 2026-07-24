@@ -363,8 +363,6 @@ function bard_about_page_output() {
 		<?php elseif ( $active_tab == 'bard_tab_3' ) : ?>
 			
 			<div class="three-columns-wrap">
-				
-				<br><br>
 
 				<?php
 
@@ -407,14 +405,12 @@ function bard_about_page_output() {
 
 			<div class="three-columns-wrap support">
 
-				<br>
-
 				<div class="column-width-3">
 					<h3>
 						<span class="dashicons dashicons-sos"></span>
 						<?php esc_html_e( 'Forums', 'bard' ); ?>
 					</h3>
-					<p><?php esc_html_e( 'Before asking a questions it\'s highly recommended to search on forums, but if you can\'t find the solution feel free to create a new topic.', 'bard' ); ?></p>
+					<p><?php esc_html_e( 'Before asking a question it\'s highly recommended to search on forums, but if you can\'t find the solution feel free to create a new topic.', 'bard' ); ?></p>
 					<a target="_blank" class="button button-primary" href="<?php echo esc_url('https://wp-royal-themes.com/support-bard-free/?ref=bard-free-backend-about-support-forum/'); ?>"><?php esc_html_e( 'Go to Support Forums', 'bard' ); ?></a>
 				</div>
 
@@ -440,8 +436,6 @@ function bard_about_page_output() {
 			</div>
 
 		<?php elseif ( $active_tab == 'bard_tab_5' ) : ?>
-
-			<br><br>
 
 			<table class="free-vs-pro form-table">
 				<thead>

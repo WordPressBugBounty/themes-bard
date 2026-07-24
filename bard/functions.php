@@ -81,6 +81,10 @@ add_action( 'after_setup_theme', 'bard_setup' );
 ** Notice after Theme Activation and Update.
 */
 function bard_activation_notice() {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return;
+	}
+
 	if ( isset($_GET['page']) ) {
 		return;
 	}
@@ -127,6 +131,10 @@ function bard_activation_notice() {
 }
 
 function bard_notice_ignore() {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return;
+	}
+
 	global $current_user;
 	$theme_data	 = wp_get_theme();
 	$user_id	 = $current_user->ID;
